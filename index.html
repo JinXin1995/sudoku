@@ -12,15 +12,27 @@
             <div class="board">
                 <div class="row" v-for="(row, row_index) in board">
                     <div class="unit" v-for="(unit, column_index) in row" @click.stop="clickUnit(row_index, column_index)"
-                         :class="['column'+column_index, 'row'+row_index, {default:unit.default}, selected_unit&&row_index===selected_unit.row?'selected_row':'',
-                         selected_unit&&column_index===selected_unit.column?'selected_column':'']">
+                         :class="['column'+column_index, 'row'+row_index,
+                         {default: unit.default,
+                         selected_row: selected_unit&&row_index===selected_unit.row,
+                         selected_column: selected_unit&&column_index===selected_unit.column,
+                         selected_num: selected_num&&board[row_index][column_index].num===selected_num}]">
                         {{unit.num}}
                     </div>
                 </div>
             </div>
         </div>
-        <div class="num-btn-container">
-            <div class="num-btn"></div>
+        <div class="btn-container">
+            <button class="btn num" :class="{selected_btn: selected_btn===1}" @click.stop="clickBtn(1)">1</button>
+            <button class="btn num" :class="{selected_btn: selected_btn===2}" @click.stop="clickBtn(2)">2</button>
+            <button class="btn num" :class="{selected_btn: selected_btn===3}" @click.stop="clickBtn(3)">3</button>
+            <button class="btn num" :class="{selected_btn: selected_btn===4}" @click.stop="clickBtn(4)">4</button>
+            <button class="btn num" :class="{selected_btn: selected_btn===5}" @click.stop="clickBtn(5)">5</button>
+            <button class="btn num" :class="{selected_btn: selected_btn===6}" @click.stop="clickBtn(6)">6</button>
+            <button class="btn num" :class="{selected_btn: selected_btn===7}" @click.stop="clickBtn(7)">7</button>
+            <button class="btn num" :class="{selected_btn: selected_btn===8}" @click.stop="clickBtn(8)">8</button>
+            <button class="btn num" :class="{selected_btn: selected_btn===9}" @click.stop="clickBtn(9)">9</button>
+            <button class="btn" :class="{selected_btn: selected_btn==='X'}" @click.stop="clickBtn('X')">擦除</button>
         </div>
     </div>
 
