@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>数独</title>
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+    <div class="content" v-cloak @click="disSelect">
+        <div id="board-container">
+            <div class="board">
+                <div class="row" v-for="(row, row_index) in board">
+                    <div class="unit" v-for="(unit, column_index) in row" @click.stop="clickUnit(row_index, column_index)"
+                         :class="['column'+column_index, 'row'+row_index, {default:unit.default}, selected_unit&&row_index===selected_unit.row?'selected_row':'',
+                         selected_unit&&column_index===selected_unit.column?'selected_column':'']">
+                        {{unit.num}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="num-btn-container">
+            <div class="num-btn"></div>
+        </div>
+    </div>
+
+    <script src="scripts/option.js"></script>
+    <script src="scripts/vue/vue.js"></script>
+    <script src="scripts/index.js"></script>
+</body>
+</html>
